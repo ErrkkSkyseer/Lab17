@@ -1,39 +1,48 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include<vector>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
 using namespace std;
 
-______________ randomVector(unsigned int N){	
-    vector<int> v;
-    for(unsigned int i = 0; i < N; i++) v.______________(rand()%10);
-    ______________;
+vector<int> randomVector(unsigned int N)
+{
+	vector<int> v;
+	for (unsigned int i = 0; i < N; i++)
+		v.push_back((rand() % 10));
+	return v;
 }
 
-______________ showVector(______________){
+void showVector(vector<int> v)
+{
 	cout << "[";
-	for(unsigned int i = 0; _____________________; i++){
-		cout << _________________;
-		if(_________________) cout << "]";
-		else cout << " ";
+	for (unsigned int i = 0; i < v.size(); i++)
+	{
+		cout << v[i];
+		if (i == v.size() - 1)
+			cout << "]";
+		else
+			cout << " ";
 	}
 }
 
-_________________ dotProduct(_____________________________){
+int dotProduct(vector<int> u, vector<int> v)
+{
 	int sum = 0;
-	for(unsigned int i = 0; _____________________; i++) sum += _________________;	
-	_________________;
+	for (unsigned int i = 0; i < u.size(); i++)
+		sum += u[i] * v[i];
+	return sum;
 }
 
-int main(){
+int main()
+{
 	srand(time(0));
 	vector<int> x = randomVector(5);
 	vector<int> y = randomVector(5);
-	int z = dotProduct(x,y);
+	int z = dotProduct(x, y);
 	showVector(x);
 	cout << " . ";
 	showVector(y);
 	cout << " = " << z;
-	
+
 	return 0;
 }
